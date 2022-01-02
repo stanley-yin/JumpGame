@@ -16,7 +16,7 @@
             height: 300px;
             border: 1px solid black;
             overflow: hidden;
-            background: no-repeat center/105% url('/img/farm-cartoon-png-Transparent-Images.png');
+            background: no-repeat center/105% url('./farm-cartoon-png-Transparent-Images.png');
         }
 
         .score-board {
@@ -24,6 +24,14 @@
             width: 400px;
             border: 1px solid black;
 
+        }
+
+        .time {
+            display: none;
+            position: absolute;
+            right: 500px;
+            top: 150px;
+            transform: translate(50%, -50%);
         }
 
         button {
@@ -134,6 +142,7 @@
                 分數
                 <div class="score"></div>
             </div>
+            <h1 class="time" id="time"></h1>
             <button onclick="startGame()">開始遊戲</button>
 
             <svg class="stanley" width="100px" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -183,7 +192,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         // TODO
-        // 1. 開始後的倒數計時
+        // 1. 開始後的倒數計時 V
         // 2. 計分 V
         // 3. 金幣加分 V
         // 4. 射出子彈
@@ -195,17 +204,43 @@
         // 9. 右邊計分板
         // 10.優化物體碰撞動畫
 
+        let countTime = 3
+        const time = document.getElementById('time')
+
         let playing = false
-        // 開始遊戲
-        function startGame() {
-            $('button').css('display', 'none')
-            playing = true
-            // 2秒後開始
-            setTimeout(() => {
+        let CountTimer
+        let coinTimer
+
+        // 計數器
+        const timer = () => {
+            CountTimer = setInterval('Count()', 1000);
+        }
+
+        // 開始倒數計時
+        function Count() {
+            if (countTime === 0) {
+                window.clearInterval(CountTimer);
+                $('.time').css('display', 'none')
                 $('.stone').css('height', '50px').addClass('move')
                 $('.move').css('animation-duration', '2s')
                 $('.coin').addClass('coinMove')
-            }, 2000);
+                i = 3
+                return
+            }
+            console.log(countTime)
+            time.innerText = countTime
+            countTime--
+        }
+
+
+
+        // 開始遊戲
+        function startGame() {
+            $('button').css('display', 'none')
+            $('.time').css('display', 'block')
+            playing = true
+            // 3秒後開始
+            timer()
         }
 
         // 讓角色跳躍
@@ -248,7 +283,8 @@
                 score = 0
                 $('.score').text(score)
                 $('button').css('display', 'block')
-                $('.coin').removeClass('coinMove')
+                $('.coin').remove()
+
             }
         }, 10);
 
@@ -267,18 +303,22 @@
                 console.log(score)
                 addScore()
             }
-
             // 撞到金幣
             if (stanleyBottom + 100 >= coinBottom && (stanleyRight - coinRight < 0)) {
                 score += 10
                 addScore()
+
+                // 金幣移除
                 $('.coin').remove()
-                setTimeout(() => {
+                cointTimer = setTimeout(() => {
                     $('.box').append('<div class="coin"></div>')
                     $('.coin').addClass('coinMove')
+                    console.log('new')
                 }, 5000);
             }
+
         }, 100);
+
 
 
         // 改變每顆石頭的數據
