@@ -137,6 +137,7 @@
 
 <body>
     <div class="row">
+        <button onclick="getData()">getData</button>
         <div class="box">
             <div class="score-box d-flex m-2 ml-5">
                 分數
@@ -185,7 +186,7 @@
         </div>
     </div>
 
-    <button onclick="getData()">getData</button>
+   
 
 
 
@@ -204,6 +205,10 @@
         // 8. 隨機石頭高度、速度 V
         // 9. 右邊計分板
         // 10.優化物體碰撞動畫
+
+        const getData = ()=>{
+            console.log('getData')
+        }
 
         let countTime = 3
         const time = document.getElementById('time')
@@ -263,7 +268,6 @@
         let now = new Date()
 
         // 判斷是否死亡
-        console.log('hi')
         setInterval(() => {
             // 角色、石頭的距離資料
             stanleyBottom = parseInt($('.stanley').css('bottom'))
