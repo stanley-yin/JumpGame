@@ -137,7 +137,6 @@
 
 <body>
     <div class="row">
-        <button onclick="getData()">getData</button>
         <div class="box">
             <div class="score-box d-flex m-2 ml-5">
                 分數
@@ -206,15 +205,6 @@
         // 9. 右邊計分板
         // 10.優化物體碰撞動畫
 
-        const getData = () => {
-            fetch('http://localhost:3001/cart/50')
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (myJson) {
-                    console.log(myJson);
-                });
-        }
 
         let countTime = 3
         const time = document.getElementById('time')
