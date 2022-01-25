@@ -186,7 +186,7 @@
         </div>
     </div>
 
-   
+
 
 
 
@@ -206,8 +206,14 @@
         // 9. 右邊計分板
         // 10.優化物體碰撞動畫
 
-        const getData = ()=>{
-            console.log('getData')
+        const getData = () => {
+            fetch('http://example.com/movies.json')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    console.log(myJson);
+                });
         }
 
         let countTime = 3
