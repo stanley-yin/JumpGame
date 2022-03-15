@@ -1,0 +1,136 @@
+.box {
+  position: relative;
+  height: 300px;
+  border: 1px solid black;
+  overflow: hidden;
+  background: no-repeat center/105%
+    url("./farm-cartoon-png-Transparent-Images.png");
+}
+
+.score-board {
+  margin-left: 20px;
+  width: 200px;
+  border: 1px solid black;
+}
+
+.time {
+  display: none;
+  position: absolute;
+  right: 500px;
+  top: 150px;
+  transform: translate(50%, -50%);
+}
+
+#startBtn {
+  position: absolute;
+  right: 500px;
+  top: 150px;
+  transform: translate(50%, -50%);
+}
+
+.score {
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  background: white;
+}
+
+.stanley {
+  position: absolute;
+  /* top: 200px; */
+  left: 30px;
+  bottom: 0px;
+  /* height: 100px; */
+  /* background-color: blue; */
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.stone {
+  position: absolute;
+  width: 50px;
+  /* height: 50px; */
+  background-color: gray;
+  /* top: 200px; */
+  bottom: 0px;
+  right: -100px;
+}
+
+.coin {
+  position: absolute;
+  right: -50px;
+  top: 90px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: yellow;
+}
+
+.coinMove {
+  animation: coinMove 2s infinite linear;
+}
+
+.move {
+  animation-name: move;
+  /* animation-duration: 2s; */
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.jump {
+  animation: jump 1s;
+}
+
+@keyframes move {
+  form {
+    right: -50px;
+  }
+
+  to {
+    right: 1000px;
+  }
+}
+
+@keyframes jump {
+  0% {
+    bottom: 0px;
+  }
+
+  50% {
+    bottom: 150px;
+  }
+
+  100% {
+    bottom: 0px;
+  }
+}
+
+@keyframes coinMove {
+  from {
+    right: -50px;
+  }
+
+  to {
+    right: 1000px;
+  }
+}
+
+ul {
+  padding: 5px;
+}
+li {
+  list-style: none;
+}
+
+form {
+  display: none;
+  position: absolute;
+  right: 331px;
+  top: 88px;
+  width: 350px;
+  background-color: white;
+  padding: 10px;
+}
