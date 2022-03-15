@@ -14,7 +14,7 @@
 // 排行榜
 const renderList = () => {
   const myScoreList = document.querySelector(".score-list");
-  fetch("http://54.249.155.240:3005/get-score", { method: "get" })
+  fetch("https://54.249.155.240:443/get-score", { method: "get" })
     .then(function (response) {
       return response.json();
     })
@@ -106,7 +106,7 @@ let now = new Date();
 const form  = document.querySelector('form')
 
 const sendScore = () => {
-  const url = "http://54.249.155.240:3005/input-score";
+  const url = "https://54.249.155.240:443/input-score";
   const nameEl = document.querySelector('#name')
 
   let data = {
