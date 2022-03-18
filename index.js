@@ -10,11 +10,13 @@
 // 8. 隨機石頭高度、速度 V
 // 9. 右邊計分板
 // 10.優化物體碰撞動畫
-
+const localUrl = 'http://localhost:3005/get-score'
+const webUrl = "http://54.249.155.240:3005/input-score";
+let url = localUrl
 // 排行榜
 const renderList = () => {
   const myScoreList = document.querySelector(".score-list");
-  fetch("https://54.249.155.240:443/get-score", { method: "get" })
+  fetch(url, { method: "get" }, { credentials: 'include' })
     .then(function (response) {
       return response.json();
     })
@@ -106,7 +108,6 @@ let now = new Date();
 const form  = document.querySelector('form')
 
 const sendScore = () => {
-  const url = "https://54.249.155.240:443/input-score";
   const nameEl = document.querySelector('#name')
 
   let data = {
@@ -115,7 +116,7 @@ const sendScore = () => {
   };
 
   $.ajax({
-    url: url,
+    url: 'http://localhost:3005/input-score',
     method: "POST",
     dataType: "x-www-form-urlencoded",
     data: data,
