@@ -12,7 +12,7 @@
 // 10.優化物體碰撞動畫
 const localUrl = 'http://localhost:3005/get-score'
 const webUrl = "http://54.249.155.240:3005/input-score";
-let url = localUrl
+let url = webUrl
 // 排行榜
 const renderList = () => {
   const myScoreList = document.querySelector(".score-list");
